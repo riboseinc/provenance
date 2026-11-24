@@ -1,0 +1,27 @@
+# Generic instance template — proves the Worker bundle (`npm run build`).
+# Real deployment values live in the PRIVATE instance repository; instance
+# data is [vars], secrets, and ephemeral D1/KV bindings, never compiled in.
+# Secrets (such as GITHUB_TOKEN) are never set here.
+name = "provenance"
+main = "src/index.ts"
+compatibility_date = "2026-11-01"
+
+[vars]
+INSTANCE_NAME = "Example Provenance"
+INSTANCE_HOST = "provenance.example.invalid"
+POLICY_ORG_NAME = "Example Organization"
+POLICY_SUPPLIER_NAME = "Example Organization"
+POLICY_PURL_NAMESPACE = "example"
+SUPPORT_CONTACT_URL = "https://example.invalid/security"
+# CATALOG_JSON = '[{"repo":"example/pkg","name":"pkg","tier":"A","releaseStream":"1.x","description":"Example package"}]'
+# GITHUB_API_BASE = "https://api.github.com"
+# OSV_API_BASE = "https://api.osv.dev"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "provenance-ephemeral"
+database_id = "00000000-0000-0000-0000-000000000000"
+
+[[kv_namespaces]]
+binding = "CACHE"
+id = "00000000000000000000000000000000"
